@@ -1,0 +1,61 @@
+{% include 'header.html' %} <!--incluye lo que tenga el archivo header!-->
+{% include 'base.html' %} <!--mensajes de alerta!-->
+
+{% for ProyectoCampos in infoProyecto %}
+{% if loop.first %}
+<form method="post" action="/update" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            Informacion General del Proyecto
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos Generales</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtCodigo">Código del proyecto</label>
+                    <input id="txtCodigo" value="{{ProyectoCampos[1]}}" class="form-control" type="text" name="txtCodigo" readOnly>
+                </div>
+                <input type="hidden" value="{{ProyectoCampos[0]}}" name="txtID" id="txtID">
+                
+                
+            <div class="form-group">
+                <label for="txtProyecto">Nombre del proyecto</label>
+                <input id="txtProyecto" value="{{ProyectoCampos[2]}}"class="form-control" type="text" name="txtProyecto" readOnly>
+            </div>
+            <div class="form-group">
+                <label for="txtModalidad">Modalidad de investigación</label>
+                <input id="txtModalidad" value="{{ProyectoCampos[3]}}"class="form-control" type="text" name="txtModalidad" readOnly>
+            </div>
+
+            {% for autor in infoProyecto %}
+                <div class="form-group">
+                    <label for="txtAutor">Autor {{loop.index}}</label>
+                    <input id="txtAutor" value="{{autor[4]}}"class="form-control" type="text" name="txtAutor" readOnly>
+                </div>
+            {% endfor %}
+
+           
+            <div class="form-group">
+                <label for="txtEvaluador">Nombre del evaluador</label>
+                <input id="txtEvaluador" value="{{ProyectoCampos[5]}}"class="form-control" type="text" name="txtEvaluador">
+            </div>
+            <div class="form-group">
+                <label for="txtCorreoEvaluador">Correo del evaluador</label>
+                <input id="txtCorreoEvaluador" class="form-control" type="email" name="txtCorreoEvaluador">
+            </div>
+            <div class="form-group">
+                <label for="txtEvaluacion">Evaluación</label>
+                <input id="txtEvaluacion" value="{{ProyectoCampos[6]}}"class="form-control" type="textarea" name="txtEvaluacion">
+            </div>
+                <div class="form-group">
+                    <input type="submit" value="Modificar" class="btn btn-success">
+                </div>
+               
+            </p>
+        </div>
+    </div>
+    
+</form>
+{% endif %}
+{% endfor %}

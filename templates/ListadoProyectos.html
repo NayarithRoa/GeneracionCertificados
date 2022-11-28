@@ -1,0 +1,30 @@
+{% include 'header.html' %} <!--incluye lo que tenga el archivo header!-->
+<br>
+
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <!--cabecera!-->
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Modalidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for proyec in ListaP %}
+        <tr>
+            <td>{{proyec[1]}}</td><!--mostrar N° de registro!-->
+            <td>{{proyec[2]}}</td>
+            <td>{{proyec[3]}}</td>
+            <td> 
+                <a href="/buscarProyecto2/{{proyec[1]}}" class="btn btn-primary">Evaluar</a> 
+                
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+
+{% include 'footer.html' %}
